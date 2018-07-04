@@ -1,0 +1,15 @@
+apply plugin: 'java'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    compile 'net.corda:corda-rpc:3.1-corda'
+    compile files('jars/cordapp-example-0.1.jar')
+}
+
+task printClassPath {
+    println(sourceSets.main.runtimeClasspath.join(':'))
+}

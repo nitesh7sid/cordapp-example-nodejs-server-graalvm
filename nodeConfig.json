@@ -1,0 +1,14 @@
+{
+    "webServers":[
+
+    {
+        "OrganizationName": "PartyA",
+        "rpcAddress": "localhost",
+        "rpcPort": 10008,
+        "rpcUserName": "user1",
+        "rpcUserPassword": "test",
+        "webPort": 3000
+    }
+ ]
+}
+
