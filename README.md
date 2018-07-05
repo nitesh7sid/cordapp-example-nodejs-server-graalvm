@@ -13,27 +13,21 @@ This example demonstates a nodejs server which uses corda rpc-3.1 library runnin
 
 ### Steps to the run the node.js server with GraalVM
 
-* Edit the `addjars.sh` to specify the correct path where the jars are placed.
-* Run `./addjars.sh` command to export the `JAR_CLASSPATH` variable. This is required so that GraalVM can allow java classes to be loaded from node.js .
-* Run the [cordaapp-example](https://docs.corda.net/tutorial-cordapp.html#running-the-example-cordapp) nodes
+* Run the [cordapp-example](https://docs.corda.net/tutorial-cordapp.html#running-the-example-cordapp) nodes
 * Make sure that the `nodeConfig.json` file matches the settings of a running node
+* Run `./gradlew printClassPath` once to make sure everything is downloaded. You should see a big classpath be printed.
 * Run `npm install` from root directory of the project to install express and body-parser npm modules.
-* Run `node --jvm --jvm.cp=$JAR_CLASSPATH server.js`
+* Run `node --jvm --jvm.cp=$( ./gradlew -q printClasspath ) server.js`
 * Output will look like:
 ```PartyA Node.js server listening on port 3000```
 
 ### TroubleShooting
 
-1) If you get the following error when starting the server, you need to install GraalVM:
+If you get the following error when starting the server, you need to install GraalVM:
 
     node: bad option: --jvm
     node: bad option: --jvm.cp=
     
-
-2) If you get the following error, run `source addjars.sh` command to reflect the JAR_CLASSPATH varaible
-
-    Error `var CordaRPCClient = Java.type('net.corda.client.rpc.CordaRPCClient') Not found`
-
 ### Interacting with the Cordaapp-example network to create IOUs from nodejs server
 
 1) ### Create-iou 

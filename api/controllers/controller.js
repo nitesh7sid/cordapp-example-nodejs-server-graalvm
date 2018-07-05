@@ -1,5 +1,4 @@
-
-var rpcOps = require('../../RPCConnection.js') 
+var rpcOps = require('../../RPCConnection.js')
 var nodeConfig = require('../../nodeConfig.json')
 var IOUState = Java.type('com.example.state.IOUState')
 var ExampleFlow = Java.type('com.example.flow.ExampleFlow')
