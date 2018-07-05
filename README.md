@@ -32,7 +32,7 @@ This example demonstates a nodejs server which uses corda rpc-3.1 library runnin
 
 2) If you get the following error, run `source addjars.sh` command to reflect the JAR_CLASSPATH varaible
 
-  Error `var CordaRPCClient = Java.type('net.corda.client.rpc.CordaRPCClient')`
+    Error `var CordaRPCClient = Java.type('net.corda.client.rpc.CordaRPCClient')`
 
 ### Interacting with the Cordaapp-example network to create IOUs from nodejs server
 
