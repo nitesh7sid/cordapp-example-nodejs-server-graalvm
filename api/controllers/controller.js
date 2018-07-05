@@ -7,9 +7,10 @@ var CordaX500Name = Java.type('net.corda.core.identity.CordaX500Name')
 
 var myself = nodeConfig.webServers[0].OrganizationName
 var notary = "Notary"
+
 exports.me = function(req, res) {
     var name = rpcOps.nodeInfo().getLegalIdentities().get(0).getName().toString()
-    res.json({ "me": name });
+    res.send(JSON.stringify({"me":name})+"\n");
 }
 
 exports.peers = function(req, res) {
@@ -22,7 +23,7 @@ exports.peers = function(req, res) {
         }
     })
 
-    res.json({ "peers": peers });
+    res.send(JSON.stringify(peers) + "\n");
 }
 
 exports.getIOUs = function(req, res) {
@@ -32,7 +33,7 @@ exports.getIOUs = function(req, res) {
         ious.push(element.getState().getData().toString())
     })
 
-    res.json({ "IOUs": ious});
+    res.send(JSON.stringify(ious) + "\n");
 
 }
 
@@ -45,8 +46,8 @@ exports.createIOU = function(req, res) {
     var otherParty = rpcOps.wellKnownPartyFromX500Name(new CordaX500Name(otherPartyOrgaName, otherPartyOrgCountry, otherPartyOrgLocality))
     try{
         var signedTx = rpcOps.startTrackedFlowDynamic(ExampleFlow.Initiator, iouValue, otherParty).getReturnValue().get()
-        res.json({ "Transaction ID": signedTx.getId().toString() });
+        res.send(JSON.stringify({ "Transaction ID": signedTx.getId().toString() })+"\n");
     }catch (ex){
-        res.json({ "Error": ex.getMessage()}); 
+        res.send(JSON.stringify({ "Error": ex.getMessage()})+"\n"); 
     }
 }
