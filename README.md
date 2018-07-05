@@ -36,11 +36,11 @@ This example demonstates a nodejs server which uses corda rpc-3.1 library runnin
 
 ### Interacting with the Cordaapp-example network to create IOUs from nodejs server
 
-1) Create-iou 
+1) ### Create-iou 
 
 ```curl -d '{"iouValue":10, "otherPartyOrgName":"PartyB","otherPartyOrgCountry":"New York", "otherPartyOrgLocality":"US"}' -H "Content-Type: application/json" -X POST http://localhost:3000/api/example/create-iou```
 
-2) Fetch IOUs
+2) ### Fetch IOUs
 
 ``` curl http://localhost:3000/api/example/ious```
 
