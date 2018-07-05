@@ -1,5 +1,5 @@
 #!/bin/bash
-export JAR_HOME=/home/osboxes/graal_test/jars
+export JAR_HOME=/root/workspace/cordapp-example-nodejs-server-graalvm/jars
 i=0
 for f in $JAR_HOME/*.jar
 do

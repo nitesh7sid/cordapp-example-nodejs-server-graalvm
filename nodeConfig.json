@@ -7,7 +7,7 @@
         "rpcPort": 10008,
         "rpcUserName": "user1",
         "rpcUserPassword": "test",
-        "webPort": 10009
+        "webPort": 3000
     }
  ]
 }
