@@ -17,10 +17,10 @@ This example demonstates a nodejs server which uses corda rpc-3.1 library runnin
 * Edit the `addjar.sh` to specify the correct path where the jars are placed.
 * Run `./addjar.sh` command to export the `JAR_CLASSPATH` variable. This is required so that GraalVM can allow java classes to be loaded from node.js
 * Edit the `nodeConfig.json` file with appropriate rpc settings.
-* Run `npm init` from root directory of the project to install express and body-parser npm modules.
+* Run `npm install` from root directory of the project to install express and body-parser npm modules.
 * Run `node --jvm --jvm.cp=$JAR_CLASSPATH server.js`
 * Output will look like:
-```Party A Node.js server listening on port 3000```
+```PartyA Node.js server listening on port 3000```
 
 ### Interacting with the Cordaapp-example network to create IOUs from nodejs server
 

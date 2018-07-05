@@ -1,10 +1,11 @@
 
 var rpcOps = require('../../RPCConnection.js') 
+var nodeConfig = require('../../nodeConfig.json')
 var IOUState = Java.type('com.example.state.IOUState')
 var ExampleFlow = Java.type('com.example.flow.ExampleFlow')
 var CordaX500Name = Java.type('net.corda.core.identity.CordaX500Name')
 
-var myself = "PartyA"
+var myself = nodeConfig.webServers[0].OrganizationName
 var notary = "Notary"
 exports.me = function(req, res) {
     var name = rpcOps.nodeInfo().getLegalIdentities().get(0).getName().toString()
@@ -17,7 +18,6 @@ exports.peers = function(req, res) {
     nodeInfo.forEach(element => {
         if (element.getLegalIdentities().get(0).nameOrNull().getOrganisation().toString() != myself && element.getLegalIdentities().get(0).nameOrNull().getOrganisation().toString()!=notary){
 
-            console.log(element.getLegalIdentities().get(0).nameOrNull().getOrganisation().toString())
             peers.push(element.getLegalIdentities().get(0).toString())
         }
     })

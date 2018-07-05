@@ -2,7 +2,7 @@
     "webServers":[
 
     {
-        "OrganizationName": "Party A",
+        "OrganizationName": "PartyA",
         "rpcAddress": "localhost",
         "rpcPort": 10008,
         "rpcUserName": "user1",
