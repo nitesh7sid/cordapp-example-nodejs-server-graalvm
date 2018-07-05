@@ -8,19 +8,31 @@ This example demonstates a nodejs server which uses corda rpc-3.1 library runnin
 
 ### Setting Up the GraalVM environment
 
-* Follow the official [GraalVM](https://www.graalvm.org/downloads/) documentation on how to setup the Graal for linux.
+* Follow the official [GraalVM](https://www.graalvm.org/docs/getting-started/) documentation on how to setup the Graal for linux or osX.
 * To learn more about GraalVM refer to the Mike Hearn's [blog](https://groups.io/g/corda-dev/topic/corda_scripting_languages/21231730?p=,,,20,0,0,0::recentpostdate%2Fsticky,,,20,2,0,21231730) 
 
 ### Steps to the run the node.js server with GraalVM
 
-* Add the [corda-example](https://github.com/corda/cordapp-example) cordapp jar to the jar folder. You can find the jar @ `kotlin-source/build/nodes/PartyA/cordapps` directory after deploying the cordapp-example
-* Edit the `addjar.sh` to specify the correct path where the jars are placed.
-* Run `./addjar.sh` command to export the `JAR_CLASSPATH` variable. This is required so that GraalVM can allow java classes to be loaded from node.js
-* Edit the `nodeConfig.json` file with appropriate rpc settings.
+* Edit the `addjars.sh` to specify the correct path where the jars are placed.
+* Run `./addjars.sh` command to export the `JAR_CLASSPATH` variable. This is required so that GraalVM can allow java classes to be loaded from node.js .
+* Run the [cordaapp-example](https://docs.corda.net/tutorial-cordapp.html#running-the-example-cordapp) nodes
+* Make sure that the `nodeConfig.json` file matches the settings of a running node
 * Run `npm install` from root directory of the project to install express and body-parser npm modules.
 * Run `node --jvm --jvm.cp=$JAR_CLASSPATH server.js`
 * Output will look like:
 ```PartyA Node.js server listening on port 3000```
+
+### TroubleShooting
+
+1) If you get the following error when starting the server, you need to install GraalVM:
+
+    node: bad option: --jvm
+    node: bad option: --jvm.cp=
+    
+
+2) If you get the following error, run `source addjars.sh` command to reflect the JAR_CLASSPATH varaible
+
+  Error `var CordaRPCClient = Java.type('net.corda.client.rpc.CordaRPCClient')`
 
 ### Interacting with the Cordaapp-example network to create IOUs from nodejs server
 
@@ -32,7 +44,7 @@ This example demonstates a nodejs server which uses corda rpc-3.1 library runnin
 
 ``` curl http://localhost:3000/api/example/ious```
 
-Othe endpoints
+Other endpoints
 
 * GET /api/example/me
 * GET /api/example/peers
